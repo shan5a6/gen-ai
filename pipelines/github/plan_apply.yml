@@ -35,9 +35,4 @@ jobs:
       - name: Plan Terraform
         run: terraform plan -var-file dev.tfvars
       - name: Apply Terraform
-        uses: github/environments-action@v2
-        with:
-          environment: production
-        environment:
-          TF_VAR_file: dev.tfvars
         run: terraform apply -var-file dev.tfvars
