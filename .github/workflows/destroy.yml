@@ -1,6 +1,11 @@
 name: Destroy
 on:
   workflow_dispatch:
+    inputs:
+      workspace:
+        description: 'Terraform workspace (e.g. dev, prod)'
+        required: true
+        default: 'dev'
 defaults:
   run:
     working-directory: terraform
