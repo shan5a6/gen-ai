@@ -1,6 +1,11 @@
 name: Destroy
 on:
   workflow_dispatch:
+    inputs:
+      workspace:
+        description: 'Terraform workspace (e.g. dev, prod)'
+        required: true
+        default: 'dev'
 defaults:
   run:
     working-directory: terraform
@@ -20,7 +25,10 @@ jobs:
         run: terraform fmt
       - name: Terraform init
         run: terraform init
+      - name: Select or create workspace
+        run: |
+          terraform workspace select ${{ github.event.inputs.workspace }} || terraform workspace new ${{ github.event.inputs.workspace }}
       - name: Terraform validate
         run: terraform validate
       - name: Terraform destroy
-        run: terraform destroy
+        run: terraform destroy -var-file=${{ github.event.inputs.workspace }}.tfvars -auto-approve
