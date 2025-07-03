@@ -18,9 +18,12 @@ jobs:
         uses: hashicorp/setup-terraform@v1
       - name: Terraform fmt
         run: terraform fmt
+      - name: Select or create workspace
+        run: |
+          terraform workspace select ${{ github.event.inputs.workspace }} || terraform workspace new ${{ github.event.inputs.workspace }}
       - name: Terraform init
         run: terraform init
       - name: Terraform validate
         run: terraform validate
       - name: Terraform destroy
-        run: terraform destroy
+        run: terraform destroy -var-file=${{ github.event.inputs.workspace }}.tfvars -auto-approve
