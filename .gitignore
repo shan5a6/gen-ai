@@ -1,0 +1,25 @@
+# ---- Virtual Environment ----
+.venv/
+.env
+__pycache__/
+
+# ---- Terraform ----
+terraform/.terraform/
+*.tfstate
+*.tfstate.backup
+crash.log
+
+# ---- Python ----
+__pycache__/
+*.pyc
+
+# ---- Secrets ----
+.env
+
+# ---- Editor ----
+.vscode/
+.idea/
+
+# ---- OS files ----
+.DS_Store
+Thumbs.db
