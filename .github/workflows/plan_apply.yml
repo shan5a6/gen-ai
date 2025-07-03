@@ -27,10 +27,10 @@ jobs:
           export AWS_REGION="us-west-2"
       - name: Terraform fmt
         run: terraform fmt
-      - name: Terraform validate
-        run: terraform validate
       - name: Terraform init
         run: terraform init
+      - name: Terraform validate
+        run: terraform validate
       - name: Terraform plan
         run: terraform plan -var-file=dev.tfvars
       - name: Terraform apply on merge

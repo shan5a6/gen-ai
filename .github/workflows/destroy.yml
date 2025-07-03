@@ -21,9 +21,9 @@ jobs:
           export AWS_SECRET_ACCESS_KEY="${{ secrets.AWS_SECRET_ACCESS_KEY }}"
       - name: Terraform fmt
         run: terraform fmt
-      - name: Terraform validate
-        run: terraform validate
       - name: Terraform init
         run: terraform init
+      - name: Terraform validate
+        run: terraform validate
       - name: Terraform destroy
         run: terraform destroy
