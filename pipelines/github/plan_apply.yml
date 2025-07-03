@@ -15,6 +15,7 @@ jobs:
       - name: Switch to terraform folder
         run: |
           cd terraform
+          ls -lrth
       - name: Install Terraform
         uses: hashicorp/setup-terraform@v1
       - name: Set AWS credentials
